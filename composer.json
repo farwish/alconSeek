@@ -1,0 +1,23 @@
+{
+    "name": "speed/speed",
+    "description": "speed for search",
+    "type": "project",
+    "license": "private",
+    "minimum-stability": "dev",
+    "require": {
+        "php": ">=5.5.9",
+        "ext-phalcon": "~2.0.13",
+        "farwish/alcon": "dev-master",
+        "hightman/xunsearch": "dev-master"
+    },
+    "repositories": [
+        {
+            "type": "vcs",
+            "url": "git@git.coding.net:farwish/alcon.git"
+        },
+        {
+            "type": "vcs",
+            "url": "https://github.com/hightman/xs-sdk-php.git"
+        }
+    ]
+}
