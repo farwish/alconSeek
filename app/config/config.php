@@ -7,8 +7,8 @@ return new \Phalcon\Config(array(
         'adapter'     => 'Mysql',
         'host'        => 'localhost',
         'username'    => 'root',
-        'password'    => '',
-        'dbname'      => 'test',
+        'password'    => '123456',
+        'dbname'      => 'speed_dev',
         'charset'     => 'utf8',
     ),
     'application' => array(
