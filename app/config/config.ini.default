@@ -1,0 +1,20 @@
+[env]
+debug = true
+
+[database]
+adapter = Mysql
+host    = localhost
+username = root
+password = 123456
+dbname   = speed_dev
+charset  = utf8
+
+[application]
+controllersDir = ../app/controllers/
+modelsDir      = ../app/models/
+migrationsDir  = ../app/migrations/
+viewsDir       = ../app/views/
+pluginsDir     = ../app/plugins/
+libraryDir     = ../app/library/
+cacheDir       = ../app/cache/
+baseUri        = /Speed/
