@@ -69,6 +69,20 @@ $di->setShared('db', function () use ($config) {
 });
 
 /**
+ * Another connection is bbs.
+ * Format: xxDb
+ */
+$di->setShared('bbsDb', function () use ($config) {
+    $dbConfig = $config->bbs->toArray();
+    $adapter = $dbConfig['adapter'];
+    unset($dbConfig['adapter']);
+
+    $class = "Phalcon\Db\Adapter\Pdo\\$adapter";
+    
+    return new $class($dbConfig);
+});
+
+/**
  * If the configuration specify the use of metadata adapter use it or use memory otherwise
  */
 $di->setShared('modelsMetadata', function () {
