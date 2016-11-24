@@ -38,8 +38,9 @@ trait ActTrait
         $count = $seek->lastCount;
 
         if ($docs) {
+            $data['total'] = $count;
             foreach ($docs as &$doc) {
-                $data[] = [ 
+                $data['data'][] = [ 
                     'content' => $doc->content,
                 ];
             }

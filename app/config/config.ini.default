@@ -26,3 +26,7 @@ pluginsDir     = ../app/plugins/
 libraryDir     = ../app/library/
 cacheDir       = ../app/cache/
 baseUri        = /Speed/
+
+[xs]
+speed = 
+demo = 

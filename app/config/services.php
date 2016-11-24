@@ -112,9 +112,47 @@ $di->setShared('session', function () {
 });
 
 /**
- * Register the search service.
+ * Register xs service.
  */
-$di->setShared('seek', function() {
-    $xs = new XS('speed');
-    return $xs->search;
+$di->setShared('xs', function () use ($config) {
+    $xs = [];
+    $conf = $config->xs ?: [];
+    foreach ($conf as $k => $v) {
+        $xs[$k] = new XS($k);
+    }
+    return $xs;
+});
+
+/**
+ * Register the search service.
+ *
+ * <code>
+ *  $this->seek['speed'];
+ * </code>
+ */
+$di->setShared('seek', function () use ($di, $config) {
+    $seek = [];
+    $conf = $config->xs ?: [];
+    $xs = $di->getShared('xs');
+    foreach ($conf as $k => $v) {
+         $seek[$k] = $xs[$k]->search;
+    }
+    return $seek;
+});
+
+/**
+ * Register the index service.
+ *
+ * <code>
+ *  $this->idx['speed'];
+ * </code>
+ */
+$di->setShared('idx', function () use ($di, $config) {
+    $idx = [];
+    $conf = $config->xs ?: [];
+    $xs = $di->getShared('xs');
+    foreach ($conf as $k => $v) {
+        $idx[$k] = $xs[$k]->index;
+    }
+    return $idx;
 });

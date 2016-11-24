@@ -53,11 +53,11 @@ class ControllerBase extends Controller
     {
         $q = $q ?: self::makeup();
 
-        $this->seek->setFuzzy()
+        $this->seek['speed']->setFuzzy()
             ->setQuery($q)
             ->setLimit(static::$limit, static::$offset);
 
-        return $this->seek; 
+        return $this->seek['speed']; 
     }
 
     /**

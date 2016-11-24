@@ -1,4 +1,4 @@
-/app/cache/*
+./app/cache/*
 /app/config/config.ini
 /vendor
 composer.lock
