@@ -27,6 +27,7 @@ libraryDir     = ../app/library/
 cacheDir       = ../app/cache/
 baseUri        = /Speed/
 
+;迅搜配置文件在 ./app/xsconfig/
+;同时需要在/usr/local/xunsearch/data/下建立同名目录
 [xs]
-speed = 
-demo = 
+answer = 

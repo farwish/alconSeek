@@ -20,6 +20,7 @@ class MController extends ControllerBase
     protected $config;
     protected $projects;
     protected $home;
+    protected $projectPath;
 
     public function initialize()
     {
@@ -31,6 +32,7 @@ class MController extends ControllerBase
         $this->config = $config;
         $this->projects = array_keys($config->xs->toArray());
         $this->home = 'http://' . $_SERVER['SERVER_NAME'] . '/m/';
+        $this->projectPath = APP_PATH . '/app/xsconfig/';
     }
 
     /**
@@ -60,7 +62,7 @@ class MController extends ControllerBase
 
             $table = $this->request->getPost('table');
             
-            $cmd = "{$this->php} {$this->indexer} --source={$this->config->database->adapter}://{$this->config->database->username}:{$this->config->database->password}@{$this->config->database->host}:3306/{$this->config->bbs->dbname} --sql=\"SELECT * FROM {$table}\" --project={$project}";
+            $cmd = "{$this->php} {$this->indexer} --source={$this->config->database->adapter}://{$this->config->database->username}:{$this->config->database->password}@{$this->config->database->host}:3306/{$this->config->bbs->dbname} --sql=\"SELECT * FROM {$table}\" --project={$this->projectPath}{$project}.ini";
 
             echo self::HAS_BUILD;
 
@@ -87,7 +89,7 @@ class MController extends ControllerBase
 
             $table = $this->request->getPost('table');
 
-            $cmd = "{$this->php} {$this->indexer} --rebuild --source={$this->config->database->adapter}://{$this->config->database->username}:{$this->config->database->password}@{$this->config->database->host}:3306/{$this->config->bbs->dbname} --sql=\"SELECT * FROM {$table}\" --project={$project}";
+            $cmd = "{$this->php} {$this->indexer} --rebuild --source={$this->config->database->adapter}://{$this->config->database->username}:{$this->config->database->password}@{$this->config->database->host}:3306/{$this->config->bbs->dbname} --sql=\"SELECT * FROM {$table}\" --project={$this->projectPath}{$project}.ini";
 
             echo self::HAS_REBUILD;
 
@@ -112,7 +114,7 @@ class MController extends ControllerBase
 
             $table = $this->request->getPost('table');
 
-            $cmd = "{$this->php} {$this->indexer} --source={$this->config->database->adapter}://{$this->config->database->username}:{$this->config->database->password}@{$this->config->database->host}:3306/{$this->config->bbs->dbname} --sql=\"SELECT * FROM {$table}\" --project={$project} --clean {$project}";
+            $cmd = "{$this->php} {$this->indexer} --source={$this->config->database->adapter}://{$this->config->database->username}:{$this->config->database->password}@{$this->config->database->host}:3306/{$this->config->bbs->dbname} --sql=\"SELECT * FROM {$table}\" --project={$this->projectPath}{$project}.ini --clean {$project}";
 
             echo self::HAS_CLEAN_AND_REBUILD;
 

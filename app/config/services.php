@@ -117,8 +117,10 @@ $di->setShared('session', function () {
 $di->setShared('xs', function () use ($config) {
     $xs = [];
     $conf = $config->xs ?: [];
+    $conf_file = APP_PATH . '/app/xsconfig/';
     foreach ($conf as $k => $v) {
-        $xs[$k] = new XS($k);
+        $ini = $conf_file . $k . '.ini';
+        $xs[$k] = new XS($ini);
     }
     return $xs;
 });

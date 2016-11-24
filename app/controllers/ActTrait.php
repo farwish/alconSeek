@@ -31,7 +31,7 @@ trait ActTrait
     {   
         $docs = $data = []; 
 
-        $seek = parent::fuzzy();
+        $seek = parent::fuzzy()['answer'];
 
         $docs = $seek->search();
         $total = $seek->dbTotal;

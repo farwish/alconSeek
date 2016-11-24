@@ -51,13 +51,19 @@ class ControllerBase extends Controller
      */
     protected function fuzzy($q = '')
     {
+        global $config;
+
+        $projects = array_keys($config->xs->toArray());
+
         $q = $q ?: self::makeup();
 
-        $this->seek['speed']->setFuzzy()
-            ->setQuery($q)
-            ->setLimit(static::$limit, static::$offset);
+        foreach ($projects as $v) {
+            $this->seek[$v]->setFuzzy()
+                ->setQuery($q)
+                ->setLimit(static::$limit, static::$offset);
+        }
 
-        return $this->seek['speed']; 
+        return $this->seek; 
     }
 
     /**
