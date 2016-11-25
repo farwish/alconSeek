@@ -41,10 +41,13 @@ trait ActTrait
             $data['total'] = $count;
             foreach ($docs as &$doc) {
                 $data['data'][] = [ 
-                    'content' => $doc->content,
+                    'content' => htmlspecialchars($seek->highlight($doc->content)),
                 ];
             }
         }
+
+        $data['p'] = static::$p;
+        $data['limit'] = static::$limit;
 
         return $data;
     } 
