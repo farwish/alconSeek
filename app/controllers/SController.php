@@ -43,6 +43,7 @@ class SController extends ControllerBase
      * 搜索建议词.
      *
      * `?q=something` for ajax request.
+     * TODO fuzzy obj.
      *
      * @farwish
      */
