@@ -16,7 +16,7 @@
     </div>
 
     <div class="form-group">
-        <p class="form-control-static">命令(默认) : </p>
+        <p class="form-control-static">&nbsp;&nbsp;命令(默认) : </p>
     </div>
     <div class="form-group">
         <input type="text" class="form-control" id="bin" placeholder="bin" value="<?=$bin;?>">
@@ -25,7 +25,7 @@
     <p>
 
     <div class="form-group">
-        <p class="form-control-static">数据库 : </p>
+        <p class="form-control-static">数据 : </p>
     </div>
     <div class="form-group">
         <select class="form-control" id="db">
@@ -36,7 +36,7 @@
     </div>
 
     <div class="form-group">
-        <p class="form-control-static">表名 : </p>
+        <p class="form-control-static">&nbsp;&nbsp;表名 : </p>
     </div>
     <div class="form-group">
         <input type="text" class="form-control" id="table" placeholder="table (除清空之外必填)">
