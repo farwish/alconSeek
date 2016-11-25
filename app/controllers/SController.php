@@ -75,6 +75,7 @@ class SController extends ControllerBase
      * 相关搜索词.
      *
      * `推荐：`
+     * TODO fuzzy obj.
      *
      * @farwish
      */
