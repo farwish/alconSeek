@@ -1,12 +1,19 @@
 <?php
-
 /**
  * 操作扩充.
  * 
  */
-trait ActTrait
+trait TraitAction
 {
+    use TraitPrimary;
 
+    /**
+     * 自定义检索方法示例.
+     *
+     * `typ=welcome` 调用.
+     *
+     * @farwish
+     */
     protected function welcome()
     {
         return "Welcome to use speed.";
@@ -41,7 +48,7 @@ trait ActTrait
             $data['total'] = $count;
             foreach ($docs as &$doc) {
                 $data['data'][] = [ 
-                    'content' => htmlspecialchars($seek->highlight($doc->content)),
+                    'content' => $doc->content,
                 ];
             }
         }
