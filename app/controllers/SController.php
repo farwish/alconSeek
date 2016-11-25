@@ -60,6 +60,7 @@ class SController extends ControllerBase
      * 纠错词.
      *
      * `您是不是要找：`
+     * TODO fuzzy obj.
      *
      * @farwish
      */
