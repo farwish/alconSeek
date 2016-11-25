@@ -189,7 +189,7 @@ class MController extends ControllerBase
     {
         if ( isset($_POST['sub']) ) {
             $expire = $this->config['env']['debug'] ? 300 : 60;
-            if ( SpManager::checkSignin($_POST['u'], $_POST['p']) ) {
+            if ( BkManager::checkSignin($_POST['u'], $_POST['p']) ) {
                 setCookie('im', $_POST['u'], time() + $expire, '/');
                 $this->response->redirect($this->home, true);
             }

@@ -1,8 +1,6 @@
 <?php
 
-use Phalcon\Di;
-
-class SpSpoor extends \Phalcon\Mvc\Model
+class BkManager extends \Phalcon\Mvc\Model
 {
 
     /**
@@ -15,13 +13,19 @@ class SpSpoor extends \Phalcon\Mvc\Model
      *
      * @var string
      */
-    public $remote_addr;
+    public $uname;
 
     /**
      *
      * @var string
      */
-    public $user_agent;
+    public $passwd;
+
+    /**
+     *
+     * @var integer
+     */
+    public $failed;
 
     /**
      * Returns table name mapped in the model.
@@ -30,14 +34,14 @@ class SpSpoor extends \Phalcon\Mvc\Model
      */
     public function getSource()
     {
-        return 'sp_spoor';
+        return 'bk_manager';
     }
 
     /**
      * Allows to query a set of records that match the specified conditions
      *
      * @param mixed $parameters
-     * @return SpSpoor[]
+     * @return BkManager[]
      */
     public static function find($parameters = null)
     {
@@ -48,7 +52,7 @@ class SpSpoor extends \Phalcon\Mvc\Model
      * Allows to query the first record that match the specified conditions
      *
      * @param mixed $parameters
-     * @return SpSpoor
+     * @return BkManager
      */
     public static function findFirst($parameters = null)
     {
@@ -56,21 +60,18 @@ class SpSpoor extends \Phalcon\Mvc\Model
     }
 
     /**
-     * 新增.
+     * 登陆验证.
+     *
+     * @param array $param
+     *
+     * @return boolean
      *
      * @farwish
      */
-    public static function insertOne(array $data)
+    public static function checkSignin($uname, $passwd)
     {
-        $db = Di::getDefault()->getShared('db'); 
+        $ret =  static::findFirst("uname = '{$uname}' AND passwd = '" . md5($passwd) . "'");
 
-        $db->insert(
-            "sp_spoor",
-            array_values($data),
-            array_keys($data)
-        );
-
-        return $db->lastInsertId();
+        return $ret;
     }
-
 }
