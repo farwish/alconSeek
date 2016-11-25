@@ -26,8 +26,9 @@ pluginsDir     = ../app/plugins/
 libraryDir     = ../app/library/
 cacheDir       = ../app/cache/
 baseUri        = /Speed/
+xsconfigDir    = APP_PATH"/app/xsconfig/"
 
-;迅搜配置文件在 ./app/xsconfig/
-;同时需要在/usr/local/xunsearch/data/下建立同名目录
+;搜索配置文件放置在 ./app/xsconfig/
+;并且实际使用的配置名在下面注册,只需要键.
 [xs]
 answer = 

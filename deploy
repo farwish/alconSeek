@@ -2,15 +2,11 @@
 # 部署运行 `sh deploy`
 # @farwish
 
-# 依赖
 if test -f composer.lock; then
     composer update --prefer-dist --no-dev
 else
     composer install --prefer-dist --no-dev
-    # 应用配置
+    # 应用配置,view cache.
     cp ./app/config/config.ini.default ./app/config/config.ini
     mkdir ./app/cache
 fi
-
-# 搜索配置
-cp ./app/xsconfig/*.ini ./vendor/hightman/xunsearch/app/

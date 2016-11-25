@@ -10,7 +10,27 @@
     <div class="form-group">
         <select class="form-control" id="project">
             <?php foreach ($projects as $v):?>
-            <option><?=$v;?></option>
+            <option value="<?=$v;?>"><?=$v;?></option>
+            <?php endforeach;?>
+        </select>
+    </div>
+
+    <div class="form-group">
+        <p class="form-control-static">命令(默认) : </p>
+    </div>
+    <div class="form-group">
+        <input type="text" class="form-control" id="bin" placeholder="bin" value="<?=$bin;?>">
+    </div>
+
+    <p>
+
+    <div class="form-group">
+        <p class="form-control-static">数据库 : </p>
+    </div>
+    <div class="form-group">
+        <select class="form-control" id="db">
+            <?php foreach ($dbs as $k => $v):?>
+            <option value="<?=$k;?>"><?=$v;?></option>
             <?php endforeach;?>
         </select>
     </div>
@@ -19,7 +39,7 @@
         <p class="form-control-static">表名 : </p>
     </div>
     <div class="form-group">
-        <input type="text" class="form-control" id="table" placeholder="table name">
+        <input type="text" class="form-control" id="table" placeholder="table (除清空之外必填)">
     </div>
 
     <hr/>
@@ -60,36 +80,43 @@
 $(function () {
 'use strict'
 
-var p = $("#project").val();
-
 $("#build").on('click', function() {
+    var p = $("#project").val();
     var t = $("#table").val();
+    var b = $("#bin").val();
+    var db = $('#db').val();
     if (t.length == 0) return alert('没有填表名!');
-    $.post('./build', {project:p, table:t}, function(data) {
+    $.post('./build', {project:p, table:t, bin:b, db:db}, function(data) {
         alert(data);
     });
 });
 
 $("#rebuild").on('click', function() {
+    var p = $("#project").val();
     var t = $("#table").val();
+    var b = $("#bin").val();
+    var db = $('#db').val();
     if (t.length == 0) return alert('没有填表名!');
-    $.post('./rebuild', {project:p, table:t}, function(data) {
+    $.post('./rebuild', {project:p, table:t, bin:b, db:db}, function(data) {
         alert(data);
     });
 });
 
 $("#cleanAndRebuild").on('click', function() {
+    var p = $("#project").val();
     var t = $("#table").val();
+    var b = $("#bin").val();
+    var db = $('#db').val();
     if (t.length == 0) return alert('没有填表名!');
-    $.post('./cleanAndRebuild', {project:p, table:t}, function(data) {
+    $.post('./cleanAndRebuild', {project:p, table:t, bin:b, db:db}, function(data) {
         alert(data);
     });
 });
 
 $("#clean").on('click', function() {
-    var t = $("#table").val();
-    if (t.length == 0) return alert('没有填表名!');
-    $.post('./clean', {project:p, table:t}, function(data) {
+    var p = $("#project").val();
+    var b = $("#bin").val();
+    $.post('./clean', {project:p, bin:b}, function(data) {
         alert(data);
     });
 });

@@ -15,24 +15,57 @@ class MController extends ControllerBase
     const NOT_EXISTS = '项目不存在';
     const NOT_SIGNIN = '未登陆';
 
-    protected $php;
+    protected $home;
     protected $indexer;
     protected $config;
-    protected $projects;
-    protected $home;
     protected $projectPath;
+    protected $projects;
+    protected $dbs = [];
+
+    protected $actProject = '';
+    protected $php;
+
+    protected $adapter = '';
+    protected $username = '';
+    protected $password = '';
+    protected $host = '';
+    protected $dbname = '';
+
+    protected $table = '';
 
     public function initialize()
     {
         global $config;
 
-        $this->php = '/usr/local/php5.6.25/bin/php';
+        $this->home = 'http://' . $_SERVER['SERVER_NAME'] . '/m/';
         $this->indexer = realpath('../') . 
             '/vendor/hightman/xunsearch/util/Indexer.php';
-        $this->config = $config;
-        $this->projects = array_keys($config->xs->toArray());
-        $this->home = 'http://' . $_SERVER['SERVER_NAME'] . '/m/';
-        $this->projectPath = APP_PATH . '/app/xsconfig/';
+        $this->config = $config->toArray();
+        $this->projectPath = $this->config['application']['xsconfigDir'];
+        $this->projects = array_keys($this->config['xs']);
+        foreach ($this->config as $k => $v) {
+            if ( isset($v['dbname']) ) {
+                $this->dbs[$k] = $v['dbname'];
+            }
+        }
+
+        // 项目
+        $this->actProject = $this->request->getPost('project');
+
+        // 命令
+        $this->php = $this->request->getPost('bin') ?: '/usr/local/php5.6.25/bin/php';
+
+        // 数据库
+        if ( $db = $this->request->getPost('db') ) {
+            $this->adapter = $this->config[$db]['adapter'];
+            $this->username = $this->config[$db]['username'];
+            $this->password = $this->config[$db]['password'];
+            $this->host = $this->config[$db]['host'];
+            $this->dbname = $this->config[$db]['dbname'];
+        }
+
+        // 表名
+        $this->table = $this->request->getPost('table');
     }
 
     /**
@@ -46,6 +79,8 @@ class MController extends ControllerBase
         
         $this->view->setVars([
             'projects' => $this->projects,
+            'bin' => $this->php,
+            'dbs' => $this->dbs,
         ]);
     }
 
@@ -58,11 +93,9 @@ class MController extends ControllerBase
     {
         if (! self::checkSignin() ) die(self::NOT_SIGNIN);
 
-        if ( ($project = $this->request->getPost('project')) && in_array($project, $this->projects) ) {
-
-            $table = $this->request->getPost('table');
+        if ( ($this->actProject) && in_array($this->actProject, $this->projects) ) {
             
-            $cmd = "{$this->php} {$this->indexer} --source={$this->config->database->adapter}://{$this->config->database->username}:{$this->config->database->password}@{$this->config->database->host}:3306/{$this->config->bbs->dbname} --sql=\"SELECT * FROM {$table}\" --project={$this->projectPath}{$project}.ini";
+            $cmd = "{$this->php} {$this->indexer} --source={$this->adapter}://{$this->username}:{$this->password}@{$this->host}:3306/{$this->dbname} --sql=\"SELECT * FROM {$this->table}\" --project={$this->projectPath}{$this->actProject}.ini";
 
             echo self::HAS_BUILD;
 
@@ -85,11 +118,9 @@ class MController extends ControllerBase
     {
         if (! self::checkSignin() ) die(self::NOT_SIGNIN);
 
-        if ( ($project = $this->request->getPost('project')) && in_array($project, $this->projects) ) {
+        if ( ($this->actProject) && in_array($this->actProject, $this->projects) ) {
 
-            $table = $this->request->getPost('table');
-
-            $cmd = "{$this->php} {$this->indexer} --rebuild --source={$this->config->database->adapter}://{$this->config->database->username}:{$this->config->database->password}@{$this->config->database->host}:3306/{$this->config->bbs->dbname} --sql=\"SELECT * FROM {$table}\" --project={$this->projectPath}{$project}.ini";
+            $cmd = "{$this->php} {$this->indexer} --rebuild --source={$this->adapter}://{$this->username}:{$this->password}@{$this->host}:3306/{$this->dbname} --sql=\"SELECT * FROM {$this->table}\" --project={$this->projectPath}{$this->actProject}.ini";
 
             echo self::HAS_REBUILD;
 
@@ -110,11 +141,9 @@ class MController extends ControllerBase
     {
         if (! self::checkSignin() ) die(self::NOT_SIGNIN);
 
-        if ( ($project = $this->request->getPost('project')) && in_array($project, $this->projects) ) {
+        if ( ($this->actProject) && in_array($this->actProject, $this->projects) ) {
 
-            $table = $this->request->getPost('table');
-
-            $cmd = "{$this->php} {$this->indexer} --source={$this->config->database->adapter}://{$this->config->database->username}:{$this->config->database->password}@{$this->config->database->host}:3306/{$this->config->bbs->dbname} --sql=\"SELECT * FROM {$table}\" --project={$this->projectPath}{$project}.ini --clean {$project}";
+            $cmd = "{$this->php} {$this->indexer} --source={$this->adapter}://{$this->username}:{$this->password}@{$this->host}:3306/{$this->dbname} --sql=\"SELECT * FROM {$this->table}\" --project={$this->projectPath}{$this->actProject}.ini --clean";
 
             echo self::HAS_CLEAN_AND_REBUILD;
 
@@ -135,9 +164,9 @@ class MController extends ControllerBase
     {
         if (! self::checkSignin() ) die(self::NOT_SIGNIN);
 
-        if ( ($project = $this->request->getPost('project')) && in_array($project, $this->projects) ) {
+        if ( ($this->actProject) && in_array($this->actProject, $this->projects) ) {
 
-            $cmd = "{$this->php} {$this->indexer} -p {$project} --clean";
+            $cmd = "{$this->php} {$this->indexer} --project={$this->projectPath}{$this->actProject}.ini --clean";
 
             echo self::HAS_CLEAN;
 
@@ -157,7 +186,7 @@ class MController extends ControllerBase
     public function signinAction()
     {
         if ( isset($_POST['sub']) ) {
-            $expire = $this->config->env->debug ? 180 : 60;
+            $expire = $this->config['env']['debug'] ? 300 : 60;
             if ( SpManager::checkSignin($_POST['u'], $_POST['p']) ) {
                 setCookie('im', $_POST['u'], time() + $expire, '/');
                 $this->response->redirect($this->home, true);
