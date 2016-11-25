@@ -181,6 +181,8 @@ class MController extends ControllerBase
     /**
      * Signin.
      *
+     * TODO security.
+     *
      * @farwish
      */
     public function signinAction()
@@ -196,6 +198,8 @@ class MController extends ControllerBase
 
     /**
      * Check.
+     *
+     * TODO security.
      *
      * @farwish
      */

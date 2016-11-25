@@ -8,7 +8,7 @@
  */
 class SController extends ControllerBase
 {
-    use ActTrait;
+    use TraitAction;
 
     /**
      * 进入.
@@ -38,72 +38,4 @@ class SController extends ControllerBase
 
         parent::spoor();
     }
-
-    /**
-     * 搜索建议词.
-     *
-     * `?q=something` for ajax request.
-     * TODO fuzzy obj.
-     *
-     * @farwish
-     */
-    protected function suggests()
-    {
-        $expand = [];
-        if ( $q = parent::makeup() ) {
-            $expand = parent::fuzzy($q)->getExpandedQuery($q, static::$limit);
-        }
-        return $expand;
-    }
-
-    /**
-     * 纠错词.
-     *
-     * `您是不是要找：`
-     * TODO fuzzy obj.
-     *
-     * @farwish
-     */
-    protected function corrected()
-    {
-        $corrected = [];
-        if ( $q = parent::makeup() ) {
-            $corrected = parent::fuzzy($q)->getCorrectedQuery($q);
-        }
-        return $corrected;
-    }
-
-    /**
-     * 相关搜索词.
-     *
-     * `推荐：`
-     * TODO fuzzy obj.
-     *
-     * @farwish
-     */
-    protected function related()
-    {
-        $related = [];
-        if ( $q = parent::makeup() ) {
-            $related = parent::fuzzy($q)->getRelatedQuery($q, static::$limit);
-        }
-        return $related;
-    }
-
-    /**
-     * 热门搜索词.
-     *
-     * `热门：`
-     *
-     * @farwish
-     */
-    protected function hot()
-    {
-        $hot = [];
-        if ( $q = parent::makeup() ) {
-            $related = parent::fuzzy($q)->getHotQuery(static::$limit, 'total');
-        }
-        return $hot;
-    }
-    
 }
