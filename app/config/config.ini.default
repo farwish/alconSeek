@@ -28,7 +28,7 @@ cacheDir       = ../app/cache/
 baseUri        = /Speed/
 xsconfigDir    = APP_PATH"/app/xsconfig/"
 
-;搜索配置文件放置在 ./app/xsconfig/
-;并且实际使用的配置名在下面注册,只需要键.
+; 开发：搜索配置统一放置 ./app/xsconfig/, 实际使用的用键在下面注册.
+; 注意：手动建立数据目录 mkdir /usr/local/xunsearch/data/answer
 [xs]
 answer = 
