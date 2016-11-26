@@ -42,7 +42,7 @@ class MController extends ControllerBase
             '/vendor/hightman/xunsearch/util/Indexer.php';
         $this->config = $config->toArray();
         $this->projectPath = $this->config['application']['xsconfigDir'];
-        $this->projects = array_keys($this->config['xs']);
+        $this->projects = $config->xs;
         foreach ($this->config as $k => $v) {
             if ( isset($v['dbname']) ) {
                 $this->dbs[$k] = $v['dbname'];
@@ -111,6 +111,9 @@ class MController extends ControllerBase
      * 平滑重建.
      *
      * `./Indexer.php --rebuild --source=mysql://root:123456@localhost:3306/dbname --sql="SELECT * FROM tablename" --project=speed`
+     *
+     * `GET` /m/rebuild
+     * TODO 定时重建
      *
      * @farwish
      */

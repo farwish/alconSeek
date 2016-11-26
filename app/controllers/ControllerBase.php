@@ -53,11 +53,9 @@ class ControllerBase extends Controller
     {
         global $config;
 
-        $projects = array_keys($config->xs->toArray());
-
         $q = $q ?: self::makeup();
 
-        foreach ($projects as $v) {
+        foreach ($config->xs as $v) {
             $this->seek[$v]->setFuzzy()
                 ->setQuery($q)
                 ->setLimit(static::$limit, static::$offset);
