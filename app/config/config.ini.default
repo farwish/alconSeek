@@ -32,3 +32,4 @@ xsconfigDir    = APP_PATH"/app/xsconfig/"
 ; 注意：手动建立数据目录 mkdir /usr/local/xunsearch/data/answer
 [xs]
 answer = 
+entries = 
