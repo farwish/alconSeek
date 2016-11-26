@@ -6,7 +6,7 @@ adapter = Mysql
 host    = localhost
 username = root
 password = 123456
-dbname   = speed_dev
+dbname   = baike_dev
 charset  = utf8
 
 [bbs]
@@ -28,7 +28,5 @@ cacheDir       = ../app/cache/
 baseUri        = /Speed/
 xsconfigDir    = APP_PATH"/app/xsconfig/"
 
-; 开发：搜索配置统一放置 ./app/xsconfig/, 实际使用的用键在下面注册.
-; 注意：手动建立数据目录 mkdir /usr/local/xunsearch/data/answer
-[xs]
-answer = 
+; 开发：搜索配置统一放置 ./app/xsconfig/xxx.ini
+; 注意：手动建数据目录与配置名相同 mkdir /usr/local/xunsearch/data/xxx

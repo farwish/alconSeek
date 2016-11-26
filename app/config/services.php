@@ -116,11 +116,10 @@ $di->setShared('session', function () {
  */
 $di->setShared('xs', function () use ($config) {
     $xs = [];
-    $conf = $config->xs ?: [];
-    $conf_file = $config->application->xsconfigDir;
-    foreach ($conf as $k => $v) {
-        $ini = $conf_file . $k . '.ini';
-        $xs[$k] = new XS($ini);
+    $xsconfigDir = $config->application->xsconfigDir;
+    $xsconfig = $config->xs;
+    foreach ($xsconfig as $v) {
+        $xs[$v] = new XS($xsconfigDir . $v . '.ini');
     }
     return $xs;
 });
@@ -129,15 +128,15 @@ $di->setShared('xs', function () use ($config) {
  * Register the search service.
  *
  * <code>
- *  $this->seek['speed'];
+ *  $this->seek['entries'];
  * </code>
  */
 $di->setShared('seek', function () use ($di, $config) {
     $seek = [];
-    $conf = $config->xs ?: [];
     $xs = $di->getShared('xs');
-    foreach ($conf as $k => $v) {
-         $seek[$k] = $xs[$k]->search;
+    $xsconfig = $config->xs;
+    foreach ($xsconfig as $v) {
+        $seek[$v] = $xs[$v]->search;
     }
     return $seek;
 });
@@ -146,15 +145,15 @@ $di->setShared('seek', function () use ($di, $config) {
  * Register the index service.
  *
  * <code>
- *  $this->idx['speed'];
+ *  $this->idx['entries'];
  * </code>
  */
 $di->setShared('idx', function () use ($di, $config) {
     $idx = [];
-    $conf = $config->xs ?: [];
     $xs = $di->getShared('xs');
-    foreach ($conf as $k => $v) {
-        $idx[$k] = $xs[$k]->index;
+    $xsconfig = $config->xs;
+    foreach ($xsconfig as $v) {
+        $idx[$v] = $xs[$v]->search;
     }
     return $idx;
 });

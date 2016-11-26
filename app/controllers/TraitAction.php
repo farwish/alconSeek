@@ -26,7 +26,35 @@ trait TraitAction
      */
     protected function major()
     {
-        return self::answers();
+        return self::entry();
+    }
+
+    /**
+     * 词条检索.
+     *
+     * @farwish
+     */
+    protected function entry()
+    {
+        $docs = $data = []; 
+
+        $seek = parent::fuzzy()['entries'];
+        $docs = $seek->search();
+        $count = $seek->lastCount;
+
+        if ($docs) {
+            $data['total'] = $count;
+            foreach ($docs as &$doc) {
+                $data['data'][] = [ 
+                    'name' => $doc->name,
+                    'describe' => $doc->info,
+                    'identify' => $doc->identify,
+                ];
+            }
+            $data['p'] = static::$p;
+        }
+
+        return $data;
     }
 
     /**
@@ -39,9 +67,7 @@ trait TraitAction
         $docs = $data = []; 
 
         $seek = parent::fuzzy()['answer'];
-
         $docs = $seek->search();
-        $total = $seek->dbTotal;
         $count = $seek->lastCount;
 
         if ($docs) {
@@ -51,10 +77,8 @@ trait TraitAction
                     'content' => $doc->content,
                 ];
             }
+            $data['p'] = static::$p;
         }
-
-        $data['p'] = static::$p;
-        $data['limit'] = static::$limit;
 
         return $data;
     } 
