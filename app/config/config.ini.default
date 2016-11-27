@@ -25,7 +25,7 @@ viewsDir       = ../app/views/
 pluginsDir     = ../app/plugins/
 libraryDir     = ../app/library/
 cacheDir       = ../app/cache/
-baseUri        = /Speed/
+baseUri        = /speed/
 xsconfigDir    = APP_PATH"/app/xsconfig/"
 
 ; 开发：搜索配置统一放置 ./app/xsconfig/xxx.ini
