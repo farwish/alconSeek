@@ -15,7 +15,7 @@
 **FAQ**  
 
 > 项目结构:  
-`基于phalcon开发工具生成的Simple类型项目改进而来; 修改点:`    
+`由phalcon开发工具(phalcon-devtools)生成的Simple类型项目改进而来; 修改点:`    
 `1.config.php加载ini配置;  2.services.php注册xunsearch服务.`  
 
 > 功能概述：  
