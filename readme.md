@@ -10,20 +10,20 @@
 
 > 一. 依赖: 
 
-> 1. LNMP环境  
+> 1). LNMP环境  
 `搭建可参考：https://github.com/farwish/delicateShell/tree/master/lnmp`
 
-> 2. Composer工具  
+> 2). Composer工具  
 ````shell
-curl -sS https://getcomposer.org/installer | php
-mv composer.phar /usr/local/bin/composer
+curl -sS https://getcomposer.org/installer | php  
+mv composer.phar /usr/local/bin/composer  
 ````
 
-> 3. Phalcon框架  
+> 3). Phalcon框架  
 `文档：https://docs.phalconphp.com/en/latest/reference/install.html`     
 `搭建可参考：https://github.com/farwish/delicateShell/blob/master/lnmp/installPhalcon.sh`  
 
-> 4. Xunsearch服务  
+> 4). Xunsearch服务  
 `文档：http://www.xunsearch.com/doc/php/guide/start.installation`  
 `搭建可参考：https://github.com/farwish/delicateShell/blob/master/support/installXunsearch.sh`  
 
