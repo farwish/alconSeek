@@ -33,7 +33,7 @@ sh deploy
 vi ./app/config/config.ini  #数据库配置  
 ````
 
-> nginx 配置部分  
+> 三. nginx 配置部分:  
 
 ````shell
 server {
