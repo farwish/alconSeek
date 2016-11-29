@@ -8,17 +8,53 @@
 
 **Install & Deploy**
 
-> 一. 依赖:   
-> `( Phalcon框架: https://docs.phalconphp.com/en/latest/reference/install.html )`   
-> `( Xunsearch服务: http://www.xunsearch.com/doc/php/guide/start.installation )`
->
-> `推荐的安装脚本:`  
-> `https://github.com/farwish/delicateShell/blob/master/lnmp/installPhalcon.sh`  
-> `https://github.com/farwish/delicateShell/blob/master/support/installXunsearch.sh`  
+> 一. 依赖: 
+
+> 1. LNMP环境  
+`搭建可参考：https://github.com/farwish/delicateShell/tree/master/lnmp`
+
+> 2. Composer工具  
+````shell
+curl -sS https://getcomposer.org/installer | php
+mv composer.phar /usr/local/bin/composer
+````
+
+> 3. Phalcon框架  
+`文档：https://docs.phalconphp.com/en/latest/reference/install.html`     
+`搭建可参考：https://github.com/farwish/delicateShell/blob/master/lnmp/installPhalcon.sh`  
+
+> 4. Xunsearch服务  
+`文档：http://www.xunsearch.com/doc/php/guide/start.installation`  
+`搭建可参考：https://github.com/farwish/delicateShell/blob/master/support/installXunsearch.sh`  
 
 > 二. 部署:   
-> `sh deploy`  
-> `vi ./app/config/config.ini   #数据库配置`  
+````shell
+sh deploy  
+vi ./app/config/config.ini  #数据库配置  
+````
+
+> nginx 配置部分  
+
+````shell
+server {
+    listen 80; 
+    server_name alconseek.farwish.com;
+
+    root /home/www/alconSeek/public;
+
+    location / { 
+        index index.html index.htm index.php;
+        try_files $uri $uri/ /index.php?_url=$uri&$args;
+    }   
+
+    location ~ \.php$ {
+        fastcgi_pass   127.0.0.1:9000;
+        fastcgi_index  index.php;
+        fastcgi_param  SCRIPT_FILENAME  $document_root$fastcgi_script_name;
+        include        fastcgi_params;
+    }
+}
+````
 
 **Overview**  
 
@@ -40,27 +76,3 @@
 
 > 搜索数据目录(data directory):  
 `/usr/local/xunsearch/data/xxx`  
-
-**fAQ**
-
-nginx config part example:  
-````shell
-server {
-    listen 80; 
-    server_name alconseek.farwish.com;
-
-    root /home/www/alconSeek/public;
-
-    location / { 
-        index index.html index.htm index.php;
-        try_files $uri $uri/ /index.php?_url=$uri&$args;
-    }   
-
-    location ~ \.php$ {
-        fastcgi_pass   127.0.0.1:9000;
-        fastcgi_index  index.php;
-        fastcgi_param  SCRIPT_FILENAME  $document_root$fastcgi_script_name;
-        include        fastcgi_params;
-    }
-}
-```
