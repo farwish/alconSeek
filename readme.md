@@ -2,11 +2,11 @@
 
 
 
-**Synopsis**
+## Synopsis  
 
 > 尔康搜索是一个让你及其方便地开发全文检索Api的应用骨架。
 
-**Install & Deploy**
+## Install & Deploy  
 
 > 一. 依赖: 
 
@@ -56,7 +56,19 @@ server {
 }
 ````
 
-**Overview**  
+```
+别忘了：
+/etc/hosts 中加入 127.0.0.1   alconseek.farwish.com   
+```
+
+> 四. 数据库  
+  `你可以用phpmyadmin等软件导入我准备好的数据库进行测试, 文件是 alconseek.sql。`
+
+> 五. 访问
+  `http://www.demo.com/s?q=`  
+
+
+## Overview   
 
 > 项目特点(feature):  
 `1. 搜索数据配置化, 即插即用, 马上拥有360搜索般的服务`  
@@ -77,6 +89,12 @@ server {
 > 搜索数据目录(data directory):  
 `/usr/local/xunsearch/data/xxx`  
 
-**Interest**
+## How to develop your application?  
+
+> 首先你得建一个表, 根据迅搜文档编辑自己的ini搜索配置文件 并 放在xsconfig目录中; 索引管理处生成数据, 然后就可以通过Api访问了.  
+> 配置文件详解: http://www.xunsearch.com/doc/php/guide/ini.guide  
+
+
+## Join  
 
 > Qq group: 377154148  
