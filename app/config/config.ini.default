@@ -6,15 +6,7 @@ adapter = Mysql
 host    = localhost
 username = root
 password = 123456
-dbname   = baike_dev
-charset  = utf8
-
-[bbs]
-adapter  = Mysql
-host     = localhost
-username = root
-password = 123456
-dbname   = kkys_dev
+dbname   = alconseek
 charset  = utf8
 
 [application]
@@ -25,7 +17,7 @@ viewsDir       = ../app/views/
 pluginsDir     = ../app/plugins/
 libraryDir     = ../app/library/
 cacheDir       = ../app/cache/
-baseUri        = /speed/
+baseUri        = /alconSeek/
 xsconfigDir    = APP_PATH"/app/xsconfig/"
 
 ; 开发：搜索配置统一放置 ./app/xsconfig/xxx.ini

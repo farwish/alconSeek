@@ -1,6 +1,6 @@
 #!/bin/bash
 # 部署运行 `sh deploy`
-# @farwish
+# @farwish.com MIT-License
 
 if test -f composer.lock; then
     composer update --prefer-dist --no-dev

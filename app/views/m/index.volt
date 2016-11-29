@@ -5,7 +5,7 @@
 <form class="form-inline" role="form">
 
     <div class="form-group">
-        <p class="form-control-static">项目 : </p>
+        <p class="form-control-static">项目名 : </p>
     </div>
     <div class="form-group">
         <select class="form-control" id="project">
@@ -25,7 +25,7 @@
     <p>
 
     <div class="form-group">
-        <p class="form-control-static">数据 : </p>
+        <p class="form-control-static">数据库 : </p>
     </div>
     <div class="form-group">
         <select class="form-control" id="db">
@@ -36,7 +36,7 @@
     </div>
 
     <div class="form-group">
-        <p class="form-control-static">&nbsp;&nbsp;表名 : </p>
+        <p class="form-control-static">&nbsp;&nbsp;数据表 : </p>
     </div>
     <div class="form-group">
         <input type="text" class="form-control" id="table" placeholder="table (除清空之外必填)">

@@ -69,20 +69,6 @@ $di->setShared('db', function () use ($config) {
 });
 
 /**
- * Another connection is bbs.
- * Format: xxDb
- */
-$di->setShared('bbsDb', function () use ($config) {
-    $dbConfig = $config->bbs->toArray();
-    $adapter = $dbConfig['adapter'];
-    unset($dbConfig['adapter']);
-
-    $class = "Phalcon\Db\Adapter\Pdo\\$adapter";
-    
-    return new $class($dbConfig);
-});
-
-/**
  * If the configuration specify the use of metadata adapter use it or use memory otherwise
  */
 $di->setShared('modelsMetadata', function () {
@@ -128,7 +114,7 @@ $di->setShared('xs', function () use ($config) {
  * Register the search service.
  *
  * <code>
- *  $this->seek['entries'];
+ *  $this->seek['article'];
  * </code>
  */
 $di->setShared('seek', function () use ($di, $config) {
@@ -145,7 +131,7 @@ $di->setShared('seek', function () use ($di, $config) {
  * Register the index service.
  *
  * <code>
- *  $this->idx['entries'];
+ *  $this->idx['article'];
  * </code>
  */
 $di->setShared('idx', function () use ($di, $config) {

@@ -4,6 +4,7 @@
  *
  * 可在 Trait 或 Controller 中使用, 外部访问没有数据.
  *
+ * @farwish
  */
 trait TraitPrimary
 {

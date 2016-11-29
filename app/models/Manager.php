@@ -1,6 +1,6 @@
 <?php
 
-class BkManager extends \Phalcon\Mvc\Model
+class Manager extends \Phalcon\Mvc\Model
 {
 
     /**
@@ -22,19 +22,13 @@ class BkManager extends \Phalcon\Mvc\Model
     public $passwd;
 
     /**
-     *
-     * @var integer
-     */
-    public $failed;
-
-    /**
      * Returns table name mapped in the model.
      *
      * @return string
      */
     public function getSource()
     {
-        return 'bk_manager';
+        return 'manager';
     }
 
     /**

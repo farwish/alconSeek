@@ -1,8 +1,16 @@
 {
-    "name": "speed/speed",
-    "description": "speed for search",
+    "name": "farwish/alconSeek",
+    "description": "application skel for full-text search",
+    "keywords": ["phalcon", "xunsearch", "full-text search", "application skel"],
     "type": "project",
-    "license": "private",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "farwish",
+            "email": "farwish@foxmail.com",
+            "role": "lead"
+        }    
+    ],
     "minimum-stability": "dev",
     "require": {
         "php": ">=5.5.9",

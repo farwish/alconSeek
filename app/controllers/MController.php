@@ -192,8 +192,8 @@ class MController extends ControllerBase
     {
         if ( isset($_POST['sub']) ) {
             $expire = $this->config['env']['debug'] ? 300 : 60;
-            if ( BkManager::checkSignin($_POST['u'], $_POST['p']) ) {
-                setCookie('im', $_POST['u'], time() + $expire, '/');
+            if ( Manager::checkSignin($_POST['u'], $_POST['p']) ) {
+                setCookie('alconSeek', $_POST['u'], time() + $expire, '/');
                 $this->response->redirect($this->home, true);
             }
         }
@@ -208,7 +208,7 @@ class MController extends ControllerBase
      */
     protected function checkSignin()
     {
-        if ( empty($_COOKIE['im']) ) {
+        if ( empty($_COOKIE['alconSeek']) ) {
             $this->response->redirect("{$this->home}signin", true);
             return false;
         }

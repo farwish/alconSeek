@@ -2,7 +2,7 @@
 
 use Phalcon\Di;
 
-class BkSpoor extends \Phalcon\Mvc\Model
+class Spoor extends \Phalcon\Mvc\Model
 {
 
     /**
@@ -30,7 +30,7 @@ class BkSpoor extends \Phalcon\Mvc\Model
      */
     public function getSource()
     {
-        return 'bk_spoor';
+        return 'spoor';
     }
 
     /**
@@ -65,7 +65,7 @@ class BkSpoor extends \Phalcon\Mvc\Model
         $db = Di::getDefault()->getShared('db'); 
 
         $db->insert(
-            "bk_spoor",
+            "spoor",
             array_values($data),
             array_keys($data)
         );

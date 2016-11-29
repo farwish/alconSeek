@@ -2,6 +2,7 @@
 /**
  * 操作扩充.
  * 
+ * @farwish
  */
 trait TraitAction
 {
@@ -16,7 +17,7 @@ trait TraitAction
      */
     protected function welcome()
     {
-        return "Welcome to use speed.";
+        return "Welcome to use alconSeek.";
     }
 
     /**
@@ -26,19 +27,19 @@ trait TraitAction
      */
     protected function major()
     {
-        return self::entry();
+        return self::demo();
     }
 
     /**
-     * 词条检索.
+     * 自定义检索方法.
      *
      * @farwish
      */
-    protected function entry()
+    protected function demo()
     {
         $docs = $data = []; 
 
-        $seek = parent::fuzzy()['entries'];
+        $seek = parent::fuzzy()['article'];
         $docs = $seek->search();
         $count = $seek->lastCount;
 
@@ -46,9 +47,9 @@ trait TraitAction
             $data['total'] = $count;
             foreach ($docs as &$doc) {
                 $data['data'][] = [ 
-                    'name' => $doc->name,
-                    'describe' => $doc->info,
-                    'identify' => $doc->identify,
+                    'title' => $doc->title,
+                    'content' => $doc->content,
+                    'author' => $doc->author,
                 ];
             }
             $data['p'] = static::$p;
@@ -56,31 +57,4 @@ trait TraitAction
 
         return $data;
     }
-
-    /**
-     * Answers.
-     *
-     * @farwish
-     */
-    protected function answers()
-    {   
-        $docs = $data = []; 
-
-        $seek = parent::fuzzy()['answer'];
-        $docs = $seek->search();
-        $count = $seek->lastCount;
-
-        if ($docs) {
-            $data['total'] = $count;
-            foreach ($docs as &$doc) {
-                $data['data'][] = [ 
-                    'content' => $doc->content,
-                ];
-            }
-            $data['p'] = static::$p;
-        }
-
-        return $data;
-    } 
-
 }
