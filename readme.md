@@ -64,7 +64,7 @@ server {
 > 四. 数据库  
   `你可以用phpmyadmin等软件导入我准备好的数据库进行测试, 文件是 alconseek.sql。`
 
-> 五. 访问
+> 五. 访问  
   `http://www.demo.com/s?q=`  
 
 
