@@ -4,7 +4,7 @@
 
 **Synopsis**
 
-> alconSeek is an application skel for develop full-text search api easily.
+> 尔康搜索是一个让你及其方便地开发全文检索Api的应用骨架。
 
 **Install & Deploy**
 
@@ -76,3 +76,7 @@ server {
 
 > 搜索数据目录(data directory):  
 `/usr/local/xunsearch/data/xxx`  
+
+**Interest**
+
+> Qq group: 377154148  
