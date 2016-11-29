@@ -66,8 +66,11 @@ server {
   `索引管理界面初始登录账号密码: admin / admin`  
 
 > 五. 访问  
+  `http://www.demo.com/m`  
   `http://www.demo.com/s?q=`  
 
+![indexManager](http://farwish.qiniudn.com/indexManager.png "indexManager")
+![indexBuild](http://farwish.qiniudn.com/indexBuild.png "indexBuild")
 
 ## Overview   
 
