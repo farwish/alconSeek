@@ -4,7 +4,7 @@
 
 **Synopsis**
 
-> alconSeek is an application skel for develop full-text search app easily.
+> alconSeek is an application skel for develop full-text search api easily.
 
 **Install & Deploy**
 
@@ -40,3 +40,27 @@
 
 > 搜索数据目录(data directory):  
 `/usr/local/xunsearch/data/xxx`  
+
+**fAQ**
+
+nginx config part example:  
+````shell
+server {
+    listen 80; 
+    server_name alconseek.farwish.com;
+
+    root /home/www/alconSeek/public;
+
+    location / { 
+        index index.html index.htm index.php;
+        try_files $uri $uri/ /index.php?_url=$uri&$args;
+    }   
+
+    location ~ \.php$ {
+        fastcgi_pass   127.0.0.1:9000;
+        fastcgi_index  index.php;
+        fastcgi_param  SCRIPT_FILENAME  $document_root$fastcgi_script_name;
+        include        fastcgi_params;
+    }
+}
+```
