@@ -2,7 +2,7 @@
 
 **Synopsis**
 
-> alconSeek is a skel for develop full-text search application easily.
+> alconSeek is an application skel for develop full-text search app easily.
 
 **Install & Deploy**
 
