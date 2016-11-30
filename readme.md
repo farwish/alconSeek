@@ -30,7 +30,7 @@ mv composer.phar /usr/local/bin/composer
 > 二. 部署:   
 ````shell
 sh deploy  
-vi ./app/config/config.ini  #数据库配置, 后面倒入的数据库
+vi ./app/config/config.ini  #数据库配置, 后面导入的数据库
 ````
 
 > 三. nginx 配置部分:  
@@ -80,7 +80,7 @@ server {
 |--- |--- |--- 
 | `q` | 可选 | 搜索词  
 | `p` | 可选 | 页码  
-| `typ` | 可选 | 指定检索方法，默认typ=entry表示检索的是词条  
+| `typ` | 可选 | 指定检索方法，默认typ=demo为主检索   
 
 *管理访问* ：`GET` /m  
 
