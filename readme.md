@@ -30,7 +30,7 @@ mv composer.phar /usr/local/bin/composer
 > 二. 部署:   
 ````shell
 sh deploy  
-vi ./app/config/config.ini  #数据库配置  
+vi ./app/config/config.ini  #数据库配置, 后面倒入的数据库
 ````
 
 > 三. nginx 配置部分:  
@@ -64,10 +64,29 @@ server {
 > 四. 数据库  
   `你可以用phpmyadmin等软件导入我准备好的数据库进行测试, 文件是 alconseek.sql。`  
   `索引管理界面初始登录账号密码: admin / admin`  
+  `vi ./app/config/config.ini  #数据库配置`  
 
 > 五. 访问  
   `http://www.demo.com/m`  
   `http://www.demo.com/s?q=`  
+
+## API
+
+*检索访问* ：`GET` /s   
+
+*参数* ：  
+
+| param | 是否必须 | explain 
+|--- |--- |--- 
+| `q` | 可选 | 搜索词  
+| `p` | 可选 | 页码  
+| `typ` | 可选 | 指定检索方法，默认typ=entry表示检索的是词条  
+
+*管理访问* ：`GET` /m  
+
+*参数* ：无  
+
+## Preview
 
 ![indexManager](http://farwish.qiniudn.com/indexManager.png "indexManager")
 ![indexBuild](http://farwish.qiniudn.com/indexBuild.png "indexBuild")
@@ -97,7 +116,6 @@ server {
 
 > 首先你得建一个表, 根据迅搜文档编辑自己的ini搜索配置文件 并 放在xsconfig目录中; 索引管理处生成数据, 然后就可以通过Api访问了.  
 > 配置文件详解: http://www.xunsearch.com/doc/php/guide/ini.guide  
-
 
 ## Join  
 
