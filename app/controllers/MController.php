@@ -53,7 +53,7 @@ class MController extends ControllerBase
         $this->actProject = $this->request->getPost('project');
 
         // 命令
-        $this->php = $this->request->getPost('bin') ?: '/usr/local/php5.6.25/bin/php';
+        $this->php = $this->request->getPost('bin') ?: PHP_BINDIR . '/php';
 
         // 数据库
         if ( $db = $this->request->getPost('db') ) {
