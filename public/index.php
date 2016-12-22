@@ -24,6 +24,11 @@ try {
     include APP_PATH . "/app/config/services.php";
 
     /**
+     * Custom Routes.
+     */
+    include APP_PATH . "/app/config/routes.php";
+
+    /**
      * Handle the request
      */
     $application = new \Phalcon\Mvc\Application($di);
