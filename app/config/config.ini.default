@@ -18,7 +18,7 @@ pluginsDir     = ../app/plugins/
 libraryDir     = ../app/library/
 cacheDir       = ../app/cache/
 baseUri        = /alconSeek/
-xsconfigDir    = APP_PATH"/app/xsconfig/"
+xsconfigDir    = app/xsconfig/
 
 ; 开发：搜索配置统一放置 ./app/xsconfig/xxx.ini
 ; 注意：手动建数据目录与配置名相同 mkdir /usr/local/xunsearch/data/xxx

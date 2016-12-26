@@ -12,9 +12,9 @@ $Ini = new \Phalcon\Config\Adapter\Ini(
 /**
  * 迅搜配置.
  */
-$xsconfig = scandir( $Ini->application->xsconfigDir );
+$xsconfig = scandir( APP_PATH . '/' . $Ini->application->xsconfigDir );
 foreach ($xsconfig as $v) {
-    if ( substr($v, 0, 1) !== '.' ) { 
+    if ( ($v != '.') && ($v != '..') && substr($v, 0, 1) !== '.' ) { 
         $Ini->xs[] = rtrim($v, '.ini'); 
     }
 }

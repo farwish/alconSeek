@@ -41,7 +41,7 @@ class MController extends ControllerBase
         $this->indexer = realpath('../') . 
             '/vendor/hightman/xunsearch/util/Indexer.php';
         $this->config = $config->toArray();
-        $this->projectPath = $this->config['application']['xsconfigDir'];
+        $this->projectPath = APP_PATH . '/' . $this->config['application']['xsconfigDir'];
         $this->projects = $config->xs;
         foreach ($this->config as $k => $v) {
             if ( isset($v['dbname']) ) {
