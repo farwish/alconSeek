@@ -6,6 +6,8 @@
 
 > 尔康搜索是一个让你极其方便地开发全文检索Api的应用骨架。
 
+> 提供：简洁的搜索接口，索引管理界面，索引定时更新脚本，多库多项目的快速二次开发.  
+
 ## Install & Deploy  
 
 > 一. 依赖: 
@@ -86,7 +88,11 @@ server {
 
 *参数* ：无  
 
-## Preview
+## Index Rebuild Crontab
+
+> index_cron_rebuild 文件  
+
+## Index Management Interface  
 
 ![indexManager](http://farwish.qiniudn.com/indexManager.png "indexManager")
 ![indexBuild](http://farwish.qiniudn.com/indexBuild.png "indexBuild")

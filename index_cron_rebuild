@@ -1,0 +1,13 @@
+#!/bin/bash
+# 
+# 索引更新: 按需增加命令,在crontab中指向本文件.
+# ( * */1 * * * /.../alconSeek/index_cron_rebuild )
+#
+# 如需自定义请修改本文件.
+#
+# @farwish.com
+
+phpbin=/usr/local/php7.0.14/bin/php
+curdir=`dirname $0` 
+
+${phpbin} ${curdir}/vendor/hightman/xunsearch/util/Indexer.php --rebuild --source=Mysql://root:123456@localhost:3306/alconseek --sql="SELECT * FROM article" --project=${curdir}/app/xsconfig/article.ini > /dev/null 2>&1
