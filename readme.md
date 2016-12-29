@@ -88,7 +88,11 @@ server {
 
 *参数* ：无  
 
-## Preview
+## Index Rebuild Crontab
+
+> index_cron_rebuild 文件  
+
+## Index Management Interface  
 
 ![indexManager](http://farwish.qiniudn.com/indexManager.png "indexManager")
 ![indexBuild](http://farwish.qiniudn.com/indexBuild.png "indexBuild")
