@@ -90,7 +90,7 @@ server {
 
 ## Index Rebuild Crontab
 
-> index_cron_rebuild 文件  
+> ./app/config/index_rebuild_cron 文件, 使用方式见注释.   
 
 ## Index Management Interface  
 
@@ -117,6 +117,9 @@ server {
 
 > 搜索数据目录(data directory):  
 `/usr/local/xunsearch/data/xxx`  
+
+> 定时脚本模板  
+`./app/config/index_rebuild_cron.default`  
 
 ## How to develop your application?  
 

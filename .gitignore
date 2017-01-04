@@ -1,5 +1,6 @@
 /app/cache/*
 /app/config/config.ini
+/app/config/index_rebuild_cron
 /vendor
 composer.lock
 

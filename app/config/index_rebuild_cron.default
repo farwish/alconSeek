@@ -1,7 +1,7 @@
 #!/bin/bash
 # 
 # 索引更新: 按需增加命令,在crontab中指向本文件.
-# ( * */1 * * * /.../alconSeek/index_cron_rebuild )
+# ( 0 * * * * /.../alconSeek/app/config/index_rebuild_cron )
 #
 # 如需自定义请修改本文件.
 #
