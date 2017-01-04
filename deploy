@@ -6,7 +6,8 @@ if test -f composer.lock; then
     composer update --prefer-dist --no-dev
 else
     composer install --prefer-dist --no-dev
-    # 应用配置,view cache.
+    # 应用配置, 定时脚本模板, view cache.
     cp ./app/config/config.ini.default ./app/config/config.ini
+    cp ./app/config/index_rebuild_cron.default ./app/config/index_rebuild_cron
     mkdir ./app/cache
 fi
