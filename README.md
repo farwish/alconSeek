@@ -126,6 +126,6 @@ server {
 > 首先你得建一个表, 根据迅搜文档编辑自己的ini搜索配置文件 并 放在xsconfig目录中; 索引管理处生成数据, 然后就可以通过Api访问了.  
 > 配置文件详解: http://www.xunsearch.com/doc/php/guide/ini.guide  
 
-## Join  
+## Discussion  
 
 > Qq group: 377154148  
