@@ -2,7 +2,7 @@
 /**
  * 搜索主类.
  *
- * 个性查询请在 ActTrait 扩充.
+ * 个性查询请在 TraitAction 扩充.
  *
  * @farwish
  */
