@@ -27,4 +27,20 @@ class MController extends ControllerBase
             }
         } 
     }
+
+    /** 
+     * Check.
+     *
+     * TODO security.
+     *
+     * @farwish
+     */
+    protected function checkSignin()
+    {   
+        if ( empty($_COOKIE['alconSeek']) ) { 
+            $this->response->redirect("/m/signin", true);
+            return false;
+        }
+        return true;
+    } 
 }
