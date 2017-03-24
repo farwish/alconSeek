@@ -34,8 +34,8 @@ class SController extends ControllerBase
 
         $this->respond($data);
 
-        fastcgi_finish_request();
+        // fastcgi_finish_request();
 
-        parent::spoor();
+        // parent::spoor();
     }
 }

@@ -71,11 +71,13 @@ class ControllerBase extends Controller
      */
     public function spoor()
     {
+        /*
         $spoor = [ 
             'remote_addr' => $_SERVER['REMOTE_ADDR'],
             'user_agent' => $_SERVER['HTTP_USER_AGENT'],
         ];
 
         Spoor::insertOne($spoor); 
+         */
     }
 }
