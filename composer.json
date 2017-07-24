@@ -13,7 +13,7 @@
     ],
     "minimum-stability": "dev",
     "require": {
-        "php": ">=5.5.9",
+        "php": ">=7.0",
         "ext-phalcon": "~3.0.2",
         "farwish/alcon": "dev-master",
         "hightman/xunsearch": "dev-master"
