@@ -68,9 +68,9 @@ server {
   `索引管理界面初始登录账号密码: admin / admin`  
   `vi ./app/config/config.ini  #数据库配置`  
 
-> 五. 访问  
-  `http://www.demo.com/m`  
-  `http://www.demo.com/s?q=`  
+> 五. 访问(任何你配置的地址或域名)  
+  `http://127.0.0.1/m`  
+  `http://127.0.0.1/s?q=`  
 
 ## API
 
